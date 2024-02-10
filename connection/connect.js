@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Models = require("../models/url");
 
 var mongoDbconnection = async function () {
-  var url = "mongodb://0.0.0.0:27017/url-shortner";
+  var url =  process.env.MONGO_URL;
   console.log(url);
     await mongoose.connect(url);
 };

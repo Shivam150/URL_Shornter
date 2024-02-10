@@ -5,8 +5,10 @@ var http = require("http");
 var debug = require("debug")("mmnt:server"); 
 var v1Routes = require("./v1/routes/url");
 var staticRoute = require("./v1/routes/staticRoute");
+var userRouter = require("./v1/routes/user");
 const https = require("https");
 const fs = require("fs");
+require("dotenv").config();
 
 var app = express();
 
@@ -26,3 +28,4 @@ app.listen(PORT, async () => {
 
 app.use("/api", v1Routes);
 app.use("/" , staticRoute);
+app.use("/api/v1/user", userRouter);
