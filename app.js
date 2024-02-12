@@ -8,6 +8,7 @@ var staticRoute = require("./v1/routes/staticRoute");
 var userRouter = require("./v1/routes/user");
 const https = require("https");
 const fs = require("fs");
+const cookieParser = require( "cookie-parser" );
 require("dotenv").config();
 
 var app = express();
@@ -17,6 +18,7 @@ app.set( 'views' , path.resolve("./views")); // Point to the folder where our te
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 const PORT = 3001;
 

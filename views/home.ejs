@@ -50,5 +50,14 @@
         <% } %>
     </div>
 
+    <div>
+        <% if(locals.data){ %>
+            <p>User <%= data %> Created Successfully</p>
+        <% } %>
+        <% if (locals.error) { %>
+            <p style='color: red'><%= error %></p>
+        <% } %>
+    </div>
+
 </body>
 </html>

@@ -15,7 +15,7 @@
 <body>
     <h1>SignUp</h1>
   <div>
-    <form method="POST" action="/api/v1/user">
+    <form method="POST" action="/api/v1/user/signUp">
         <label>FullName: </label>
         <input type="text" required name="name" placeholder="Enter your full name"/><br>
         <label>Email: </label>
@@ -26,9 +26,6 @@
         <button type="submit">SignUp</button>
     </form>
  </div>
-    <% if(locals.data){ %>
-        <p>User <%= id %> Created Successfully</p>
-    <% } %>
 
 </body>
 </html>
