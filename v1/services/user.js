@@ -5,6 +5,7 @@ async function SignUp(req,res){
     const data = req.body;
     let user = await userModel.findOne({email: data.email , isDeleted: false});
     if(!user){
+        
         user = await userModel.create(data);
     }
     else{

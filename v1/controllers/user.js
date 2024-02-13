@@ -1,6 +1,6 @@
 const services =   require('../services/user');
 const {v4: uuid} =  require("uuid");
-const  {setUser} = require("../../utility/auth");
+const  {setUserToken} = require("../../utility/auth");
 
 
 async function SignUp(req,res,next) {
@@ -25,9 +25,8 @@ async function Login(req, res, next){
             console.log("Invalid User Before");
             return res.render( "login",{ error : "Invalid email or password!" });
         }
-        const sessionId = uuid();
-        setUser(sessionId , user);
-        res.cookie( "userId" , sessionId) ;
+        const token = setUserToken(user);
+        res.cookie( "userId" , token) ;
         return res.redirect("/home");
     } catch (error) {
         next(error);
