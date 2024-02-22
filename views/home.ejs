@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
-    <style>
-        body {
-            background-color: aquamarine;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-        };
-    </style>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
 </head>
+<!-- include header -->
+<%- include("header")%>
 <body>
-    <h1 class="heading1">URL Shortner</h1>
-
-    <div>
+  <div class="Home">
+    <h1 class="heading1">URL SHORTNER</h1>
+    <div class="container">
         <form method="POST" action="/api/url">
             <label>Enter your orignal Url</label><br>
             <input type="text" name = "url" placeholder="https://www.example.com/" /><br>
             <button type="submit">Generate</button>
         </form>
     </div>
+
+    <% if(locals.empty) {%>
+        <p style="color: red;"><%=empty %></p>
+   <% } %>
 
     <% if(locals.id) { %>
         <p>Generated URL: http://localhost:3001/api/<%= id %></p>
@@ -58,6 +58,7 @@
             <p style='color: red'><%= error %></p>
         <% } %>
     </div>
+</div>  
 
 </body>
 </html>

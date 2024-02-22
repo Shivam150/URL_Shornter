@@ -2,20 +2,23 @@ const urlModel = require("../../models/url");
 const mongoose = require("mongoose");
 
 const shortid = require("shortid");
-async function handleShortUrl(req){
+
+async function handleShortUrl(req , res){
     const data = req.body;
     console.log("Data======:",data);
-    console.log("Hello. I am in the handler.");
-    if(!data || !data.url) return {status:400, message:"Missing parameter 'url'"};  //Check for required parameters
+    if(!data || !data.url){
+        res.render("home",{empty:"URL is required!"});
+    }  //Check for required parameters
     let  shortID = shortid();  
-    console.log("shortID=====: ",shortID); 
+    console.log("shortID=====: ",shortID);
+    console.log("UserId====:",req.user._id);
     let shortUrl = await urlModel.create({
         shortId: shortID,
         redirectUrl: data.url,
         visitHistory: [],
         userId: req.user._id,
     });
-    console.log("The Short Url is : ",shortUrl);
+
    return shortUrl;
 };
 

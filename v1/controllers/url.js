@@ -5,7 +5,7 @@ const ejs = require("ejs");
 async function handleShortUrl(req,res,next){
     try {
         console.log("I am in the controllers");
-        let url = await  services.handleShortUrl(req);
+        let url = await  services.handleShortUrl(req,res);
         res.render("home", {
             id: url.shortId,
         });

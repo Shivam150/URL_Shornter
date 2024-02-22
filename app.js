@@ -13,12 +13,13 @@ require("dotenv").config();
 
 var app = express();
 
-app.set("view engine" , "ejs"); // set up ejs for templating.
 app.set( 'views' , path.resolve("./views")); // Point to the folder where our templates are located.
+app.set("view engine" , "ejs"); // set up ejs for templating.
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = 3001;
 
